@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../main.css">
-    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
-    <link rel="icon" href="favicon 32x32">
-    <link rel="icon" href="favicon 48x48">
-    <title>Крюков В.А.</title>
-    <meta charset="UTF-8">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="favicon 32x32">
+        <link rel="icon" href="favicon 48x48">
+        <title>Крюков В.А.</title>
+        <meta charset="UTF-8">
+    </head>
 
-<title>Облако тегов</title>
+    <title>Облако тегов</title>
 
     <style>
         .container {
@@ -35,6 +36,11 @@
             animation-play-state: paused;
         }
 
+        @keyframes move {
+            from { transform: translate(0, 0); }
+            to   { transform: translate(20px, -20px); }
+        }
+
         .t1 { top: 50px; left: 100px; background: red; font-size: 14px; }
         .t2 { top: 150px; left: 300px; background: blue; font-size: 20px; }
         .t3 { top: 250px; left: 200px; background: green; font-size: 16px; }
@@ -54,29 +60,28 @@
         .t15 { top: 20px; left: 400px; background: darkblue; }
 
     </style>
-</head>
 
-<body>
+    <body>
 
-    <div class="container">
-        <div class="tag t1">CSS</div>
-        <div class="tag t2">position</div>
-        <div class="tag t3">absolute</div>
-        <div class="tag t4">relative</div>
-        <div class="tag t5">z-index</div>
+        <div class="container">
+            <div class="tag t1">CSS</div>
+            <div class="tag t2">position</div>
+            <div class="tag t3">absolute</div>
+            <div class="tag t4">relative</div>
+            <div class="tag t5">z-index</div>
 
-        <div class="tag t6">flex</div>
-        <div class="tag t7">grid</div>
-        <div class="tag t8">margin</div>
-        <div class="tag t9">padding</div>
-        <div class="tag t10">border</div>
+            <div class="tag t6">flex</div>
+            <div class="tag t7">grid</div>
+            <div class="tag t8">margin</div>
+            <div class="tag t9">padding</div>
+            <div class="tag t10">border</div>
 
-        <div class="tag t11">overflow</div>
-        <div class="tag t12">transform</div>
-        <div class="tag t13">animation</div>
-        <div class="tag t14">hover</div>
-        <div class="tag t15">display</div>
-    </div>
+            <div class="tag t11">overflow</div>
+            <div class="tag t12">transform</div>
+            <div class="tag t13">animation</div>
+            <div class="tag t14">hover</div>
+            <div class="tag t15">display</div>
+        </div>
 
-</body>
+    </body>
 </html>
