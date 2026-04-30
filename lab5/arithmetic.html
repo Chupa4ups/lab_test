@@ -99,6 +99,12 @@
              let result = a ** b;
                 alert(a + " в степени " + b + " = " + result);
         }
+        function changeOutput(buttonNum, backColor, textColor) {
+            let output = document.getElementById('output');
+            output.innerHTML = 'Нажата кнопка ' + buttonNum;
+            output.style.backgroundColor = backColor;
+            output.style.color = textColor;
+        }
     </script>
 
     <style>
@@ -114,6 +120,11 @@
             line-height: 50px;
             background-color: rgb(168, 192, 206);
             display: inline-block;
+        }
+        #output {
+            border: 1px solid;
+            width: 300px;
+            height: 40px;
         }
     </style>
 
@@ -137,6 +148,15 @@
         <div class="message" onclick="showStep()">Возвести в степень</div>
 
         <div class="message" onclick="showAuthor()">Узнать, кто автор страницы</div>
+
+        <div>
+            <input type="button" value="Кнопка 1" onclick="changeOutput(1, 'red', 'yellow')">
+            <input type="button" value="Кнопка 2" onclick="changeOutput(2, 'black', 'lime')">
+            <input type="button" value="Кнопка 3" onclick="changeOutput(3, 'blue', 'white')">
+            <input type="button" value="Кнопка 4" onclick="changeOutput(4, 'orange', 'black')">
+        </div>
+
+        <div id="output"></div>
 
 
     </main>
