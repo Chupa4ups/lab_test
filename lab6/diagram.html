@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Диаграмма</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon.ico 32x32">
+        <link rel="icon" href="../favicon.ico 48x48">
+
+        <style>
+            #diag {
+                display: flex;
+                flex-direction: column; /* сверху вниз */
+                gap: 1px;
+                height: 300px;
+                border: 1px solid gray;
+                padding: 10px;
+                background-color: white;
+            }
+
+            .bar {
+                height: 20px;
+                width: 0px;
+                display: flex;
+                align-items: center;
+                padding-left: 5px;
+                color: black;
+                font-size: 12px;
+            }
+        </style>
+        <script>
+            function showDiagram() {
+                let data = [36, 86, 55, 28, 92, 60, 41, 17, 9, 43];
+                let colors = ['red', 'green', '#00ff33', 'blue', 'orange', 'yellow', 'darkgreen', 'lightblue', 'brown', 'violet'];
+
+                let bars = document.getElementsByClassName('bar');
+
+                let maxData = Math.max(...data);
+
+                const diagWidth = document.getElementById('diag').clientWidth;
+
+                const k = diagWidth / maxData * 0.9;
+
+                for (let i = 0; i < data.length; i++) {
+                    bars[i].style.width = k * data[i] + 'px';   // горизонталь
+                    bars[i].style.backgroundColor = colors[i];
+                    bars[i].textContent = data[i];
+                }
+            }
+        </script>
+    </head>
+    
+    <body onload="showDiagram()">
+        <header>
+            НГТУ, ФБ, Лабораторная работа 6
+        </header>
+
+        <main>
+            <div id="diag">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </main>
+
+        <footer>
+            &copy; Крюков Василий, ФБИ-41, 2 курс, 2026
+        </footer>
+    </body>
+</html>
