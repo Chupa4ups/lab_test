@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Таблица умножения</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon.ico 32x32">
+        <link rel="icon" href="../favicon.ico 48x48">
+        <style>
+            .table {
+                border: 2px solid maroon;
+                border-radius: 5px;
+                padding: 20px;
+                display: inline-block;
+                background-color: #9cbded;
+            }
+        </style>
+
+        <script>
+            function showMutipleTable() {
+                let num = document.getElementById('multiplier').value;
+                let start = document.getElementById('start').value;
+                let end = document.getElementById('end').value;
+                num = Number(num);
+                start = Number(start);
+                end = Number(end);
+
+                if(start > end) {
+                    let temp = start;
+                    start = end;
+                    end = temp;
+                }
+
+                let tbl = document.getElementById('mtable');
+                tbl.innerHTML = '<h1>Таблица умножения</h1>';
+                tbl.innerHTML += '<div class="table" id="numbers"></div>';
+                let numbers = document.getElementById('numbers');
+                for(let i = 1; i <= 10; i++) {
+                    let s = `<div>${i} *${num} = ${i*num}</div>`;
+                    numbers.innerHTML += s;
+                }
+            }
+        </script>
+    </head>
+
+    <body onload="showMutipleTable()">
+        <header>
+            НГТУ, ФБ, Лабораторная работа 6
+        </header>
+
+        <main>
+            <div id="mtable"></div>
+            <div>
+                <label>
+                    Умножить на:
+                    <input type="number" id="multiplier" value="7">
+                </label>
+
+                <label>
+                    Начать с:
+                    <input type="number" id="start" value="1">
+                </label>
+
+                <label>
+                    Закончить на:
+                    <input type="number" id="end" value="10">
+                </label>
+
+                <button onclick="showMutipleTable()">
+                    Таблица
+                </button>
+            </div>
+        </main>
+
+        <footer>
+            &copy; Крюков Василий, ФБИ-41, 2 курс, 2026
+        </footer>
+    </body>
+
+</html>
