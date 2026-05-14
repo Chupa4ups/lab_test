@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Книги</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon.ico 32x32">
+    <link rel="icon" href="../favicon.ico 48x48">
+    <style>
+        .book {
+            border: 2px solid lightgray;
+            border-radius: 10px;
+            padding: 15px;
+            background-color: white;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+        }
+        .unavailable {
+            opacity: 0.4;
+            filter: grayscale(1);
+        }
+    </style>
+    <script src="books.js"></script>
+    <script>
+        function showBooks() {
+            const booklist = document.getElementById('booklist');
+            for(let i = 0; i < books.length; i++) {
+            let classes = ' book';
+            if(books[i].bestseller) {
+                classes += ' bestseller';
+            }
+            if(!books[i].available) {
+                classes += ' unavailable';
+            }
+                booklist.innerHTML += `
+                    <div class="${classes}">
+                    <div><b>${ books[i].author }.</b></div>
+                    <div><i>${ books[i].author }</i></div>
+                    ${ books[i].price }
+                    &mdash; ${ books[i].publicationYear }<br>
+                    ${books[i].bestseller  ? "Бестселлер" : "Обычная книга"}<br>
+                    ${books[i].available ? "В наличии" : "Нет в наличии"}
+                </div>
+                `
+            }
+        }
+    </script>
+</head>
+<body onload="showBooks()">
+    <header>
+        НГТУ, ФБ, Лабораторная работа 6
+    </header>
+
+    <main>
+        <h1>Список книг</h1>
+        <div id="booklist"></div>
+    </main>
+
+    <footer>
+        &copy; Крюков Василий, ФБИ-41, 2 курс, 2026
+    </footer>
+</body>
+</html>
