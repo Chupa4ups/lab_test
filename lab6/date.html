@@ -8,6 +8,11 @@
         <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
         <link rel="icon" href="../favicon.ico 32x32">
         <link rel="icon" href="../favicon.ico 48x48">
+        <style>
+            header {
+                transition: color 0.5s;
+            }
+        </style>
         <script>
             function showDate() {
                 let out = document.getElementById('current-date');
@@ -48,6 +53,25 @@
                     </div>
                 `;
             }
+            function changeColors() {
+                const header = document.getElementsByTagName('header')[0];
+                const rgb = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+                header.style.color = rgb;
+            }
+
+            let timerNum;
+
+            function startChangeColors() {
+                changeColors();
+                timerNum = setInterval(changeColors, 1000);
+                document.getElementById('start-btn').disabled = true;
+                document.getElementById('stop-btn').disabled = false;
+            }
+            function stopChangeColors() {
+                clearInterval(timerNum);
+                document.getElementById('start-btn').disabled = false;
+                document.getElementById('stop-btn').disabled = true;
+            }
         </script>
     </head>
 
@@ -60,6 +84,10 @@
             <h2>Текущая дата и время</h2>
             <div id="current-date"></div>
             <div id="different-dates"></div>
+            <div>
+                <button onclick="startChangeColors()" id="start-btn">Старт</button>
+                <button onclick="stopChangeColors()" disabled id="stop-btn">Стоп</button>
+            </div>
         </main>
 
         <footer>
