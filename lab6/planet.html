@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <title>Планеты</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon.ico 32x32">
+        <link rel="icon" href="../favicon.ico 48x48">
+        <script src="planets.js"></script>
+        <style>
+            button {
+                margin: 5px;
+                padding: 10px;
+                cursor: pointer;
+                background-color: rgb(26, 89, 110);
+                border-radius: 30px; 
+                color: rgb(153, 233, 255);
+            }
+            #info {
+                margin-top: 20px;
+                padding: 15px;
+                border: 1px solid black;
+            }
+            img {
+                width: 300px;
+                height: 300px;
+            }
+        </style>
+        <script>
+            function showButtons() {
+                let buttons =
+                    document.getElementById('buttons');
+                for(let i = 0; i < planets.length; i++) {
+                    buttons.innerHTML += `
+                        <button onclick="showInfo(${i})">
+                            ${planets[i].name}
+                        </button>
+                    `;
+                }
+            }
+            function showInfo(index) {
+                let info =
+                    document.getElementById('info');
+
+                info.innerHTML = `
+                    <h2>${planets[index].name}</h2>
+                    <img src="${planets[index].image}">
+                    <div>
+                        Радиус:
+                        ${planets[index].radius}
+                    </div>
+                    <div>
+                        Температура:
+                        ${planets[index].temperature}
+                    </div>
+                `;
+            }
+        </script>
+    </head>
+    <body onload="showButtons()">
+        <header>
+            НГТУ, ФБ, Лабораторная работа 6
+        </header>
+
+        <h1>Планеты</h1>
+        <div id="buttons"></div>
+        <div id="info">
+            Нажмите на кнопку планеты
+        </div>
+
+        <footer>
+            &copy; Крюков Василий, ФБИ-41, 2 курс, 2026
+        </footer>
+    </body>
+</html>
