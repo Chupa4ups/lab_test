@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторная работа 7</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon.ico 32x32">
+    <link rel="icon" href="../favicon.ico 48x48">
+    <script>
+        function addNewBlock() {
+            let newBlock = document.createElement('div');
+            newBlock.style.backgroundColor = 'green';
+            newBlock.style.height = '40px';
+            document.querySelector('main').appendChild(newBlock);
+
+            newBlock.style.width = '300px';
+            newBlock.style.border = '2px solid darkgreen';
+            newBlock.style.margin = '10px';
+            newBlock.style.borderRadius = '10px';
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 7
+    </header>
+
+    <main>
+        <button onclick="addNewBlock()">Добавить блок</button>
+    </main>
+
+    <footer>
+        &copy;Крюков Василий, ФБИ-41, 2 курс, 2026
+    </footer>
+</body>
+</html>
