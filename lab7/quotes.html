@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Котировки акций компании ДОМ.РФ</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon.ico 32x32">
+    <link rel="icon" href="../favicon.ico 48x48">
+    <script>
+        function showStocks() {
+            let dates = [
+                '14.05.2026',
+                '15.05.2026',
+                '18.05.2026',
+                '19.05.2026',
+                '20.05.2026',
+                '21.05.2026',
+                '22.05.2026',
+                '25.05.2026',
+                '26.05.2026'
+            ];
+            let prices = [
+                2329.00,
+                2327.80,
+                2341.80,
+                2332.10,
+                2310.00,
+                2383.00,
+                2352.30,
+                2344.90,
+                2349.00
+            ];
+            let table = document.getElementById('stock-table');
+            table.innerHTML = `
+                <tr>
+                    <th>Дата</th>
+                    <th>Цена</th>
+                    <th>Разница</th>
+                </tr>
+            `;
+            for(let i = 0; i < prices.length; i++) {
+                let diff = '-';
+                if(i > 0) {
+                    diff = (prices[i] - prices[i - 1]).toFixed(2);
+                }
+                let color = 'black';
+                if(diff > 0) {
+                    color = 'green';
+                }
+                else if(diff < 0) {
+                    color = 'red';
+                }
+                table.innerHTML += `
+                    <tr>
+                        <td>${dates[i]}</td>
+                        <td>${prices[i]}</td>
+                        <td style="color:${color}">
+                            ${diff}
+                        </td>
+                    </tr>
+                `;
+            }
+            let sum = 0;
+            for(let i = 0; i < prices.length; i++) {
+                sum += prices[i];
+            }
+            let average = sum / prices.length;
+            average = average.toFixed(2);
+            let max = Math.max(...prices);
+            let min = Math.min(...prices);
+            document.getElementById('info').innerHTML = `
+                <p>Средняя цена: ${average}</p>
+                <p>Максимальная цена: ${max}</p>
+                <p>Минимальная цена: ${min}</p>
+            `;
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 7
+    </header>
+
+    <main>
+
+        <button id="btn" onclick="showStocks()">
+            Курс акций ДОМ.РФ
+        </button>
+
+        <table border="1" id="stock-table"></table>
+        <div id="info"></div>
+    </main>
+
+    <footer>
+        &copy;Крюков Василий, ФБИ-41, 2 курс, 2026
+    </footer>
+</body>
+</html>
