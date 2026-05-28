@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Прогноз погоды</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon.ico 32x32">
+    <link rel="icon" href="../favicon.ico 48x48">
+
+    <script>
+        function showWeather() {
+            fetch('https://api.open-meteo.com/v1/forecast?latitude=55.0415&longitude=82.9346&hourly=temperature_2m&timezone=Asia%2FBangkok')
+                .then(function(response) {
+                    return response.json();
+                })
+
+                .then(function(json) {
+                    let times = json.hourly.time;
+                    let temperatures = json.hourly.temperature_2m;
+                    let result = '';
+                    let count = 0;
+                    for(let i = 0; i < times.length; i++) {
+                        if(
+                            times[i].includes('08:00') ||
+                            times[i].includes('12:00') ||
+                            times[i].includes('20:00')
+                        ) {
+                            result += `
+                                <p>
+                                    Время: ${times[i]}
+                                    <br>
+                                    Температура: ${temperatures[i]} °C
+                                </p>
+                            `;
+                            count++;
+                            if(count == 3) {
+                                break;
+                            }
+                        }
+                    }
+                    document.getElementById('weather').innerHTML = result;
+                });
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 7
+    </header>
+
+    <main>
+
+        <button onclick="showWeather()">
+            Показать погоду
+        </button>
+
+        <div id="weather"></div>
+
+    </main>
+
+    <footer>
+        &copy;Крюков Василий, ФБИ-41, 2 курс, 2026
+    </footer>
+</body>
+</html>
