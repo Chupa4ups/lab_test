@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Курс евро</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon.ico 32x32">
+    <link rel="icon" href="../favicon.ico 48x48">
+    <script>
+        function showEuro() {
+            fetch('https://www.cbr-xml-daily.ru/daily_json.js')
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(json) {
+                    let euro = json.Valute.EUR;
+                    let current = euro.Value;
+                    let previous = euro.Previous;
+                    let diff = (current - previous).toFixed(2);
+                    let text = '';
+
+                    if(diff > 0) {
+                        text = 'Курс вырос';
+                    }
+                    else {
+                        text = 'Курс снизился';
+                    }
+                    document.getElementById('result').innerHTML = `
+                        <div class="euro-block">
+                            <h2>Курс евро</h2>
+                            <p>Дата запроса: ${json.Date}</p>
+                            <p>Текущий курс: ${current}</p>
+                            <p>Предыдущий курс: ${previous}</p>
+                            <p>
+                                Разница:
+                                <span>
+                                    ${diff}
+                                </span>
+                            </p>
+                            <p>${text}</p>
+                            <p>
+                                Источник:
+                                <a href="https://www.cbr-xml-daily.ru/">
+                                    cbr-xml-daily.ru
+                                </a>
+                            </p>
+                        </div>
+                    `;
+                });
+        }
+    </script>
+
+    <style>
+        .euro-block {
+            border: 2px solid darkblue;
+            padding: 20px;
+            margin-top: 20px;
+            width: 400px;
+            background-color: aliceblue;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 7
+    </header>
+
+    <main>
+        <button onclick="showEuro()">
+            Курс Евро
+        </button>
+        <div id="result"></div>
+    </main>
+
+    <footer>
+        &copy;Крюков Василий, ФБИ-41, 2 курс, 2026
+    </footer>
+</body>
+</html>
